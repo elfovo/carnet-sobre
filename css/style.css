@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Carnet Sobre — feuille de style unique du site
+   Approche mobile first : les règles de base visent le smartphone,
+   puis deux media queries en min-width enrichissent la mise en page :
+     - à partir de 761 px  : tablette
+     - à partir de 1025 px : ordinateur
+   Éco-conception : polices système, aucune image de décor, aucune animation,
+   un seul fichier pour tout le site (mis en cache), servi minifié (style.min.css).
+   ========================================================================== */
+
+/* ---------- 1. Variables (charte graphique) ---------- */
+:root {
+  --fond: #FAF9F6;
+  --surface: #FFFFFF;
+  --texte: #1C1C1C;        /* 16,2:1 sur le fond */
+  --texte-2: #4A4A4A;      /* 8,4:1 */
+  --primaire: #1F5C3F;     /* 7,5:1 : liens, boutons, focus */
+  --primaire-fonce: #174A32;
+  --primaire-clair: #EEF4EF;
+  --bordure: #DDDAD3;      /* séparateurs décoratifs */
+  --bordure-ui: #8C8A84;   /* 3,3:1 : contours des composants */
+  --police: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --police-lecture: Georgia, "Times New Roman", serif;
+  --rayon: 6px;
+  --largeur: 1120px;
+  --marge: 16px;
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; }
+html { font-size: 100%; }  /* respecte la taille de texte choisie par l'utilisateur */
+body { margin: 0; background: var(--fond); color: var(--texte); font-family: var(--police); font-size: 1rem; line-height: 1.6; }
+img, svg { max-width: 100%; }
+img { height: auto; }
+a { color: var(--primaire); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--primaire); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; }
+h1 { font-size: 1.85rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.2rem; }
+button, select { font: inherit; }
+.conteneur { max-width: var(--largeur); margin: 0 auto; padding: 0 var(--marge); }
+
+/* Texte réservé aux lecteurs d'écran */
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* Lien d'évitement : premier élément au clavier, visible au focus */
+.evitement { position: absolute; left: 16px; top: -100px; z-index: 10; padding: 10px 16px; border-radius: var(--rayon); background: var(--primaire); color: #fff; }
+.evitement:focus { top: 8px; }
+
+/* ---------- 3. Composants communs ---------- */
+.chapo { font-size: 1.2rem; color: var(--texte-2); max-width: 46em; }
+.meta { font-size: 0.93rem; color: var(--texte-2); }
+.lire { font-weight: 600; }
+
+/* Étiquette de catégorie */
+.tag { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: var(--primaire-clair); color: var(--primaire); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+.tag svg { width: 16px; height: 16px; }
+
+/* Boutons (cible tactile de 44 px minimum) */
+.bouton { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 20px; border: 1px solid var(--primaire); border-radius: var(--rayon); background: var(--primaire); color: #fff; font-weight: 600; text-decoration: none; cursor: pointer; }
+.bouton:hover { background: var(--primaire-fonce); }
+.bouton-2 { background: var(--surface); color: var(--primaire); }
+.bouton-2:hover { background: var(--primaire-clair); }
+
+select { min-height: 44px; padding: 8px 12px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); background: var(--surface); color: var(--texte); font-size: 0.95rem; }
+
+/* Encart de la colonne latérale */
+.encart { margin-bottom: 24px; padding: 20px 24px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--surface); }
+.encart h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .04em; color: var(--texte-2); }
+.encart ul { list-style: none; margin: 0; padding: 0; }
+.encart li a { display: flex; justify-content: space-between; min-height: 44px; padding: 10px 0; border-bottom: 1px solid var(--bordure); text-decoration: none; }
+.encart li:last-child a { border-bottom: 0; }
+.encart p { margin: 0 0 12px; font-size: .95rem; color: var(--texte-2); }
+
+/* Avatar en initiales, dessiné en CSS (pas de photo) */
+.avatar { flex: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--primaire); color: #fff; font-weight: 700; }
+
+/* ---------- 4. En-tête et menu (mobile : menu replié) ---------- */
+.entete { position: relative; background: var(--surface); border-bottom: 1px solid var(--bordure); }
+.entete .conteneur { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 60px; }
+.logo { display: flex; align-items: center; gap: 10px; color: var(--texte); font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+.logo svg { width: 28px; height: 28px; }
+
+.btn-menu { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); background: var(--surface); color: var(--texte); font-weight: 600; cursor: pointer; }
+.btn-menu svg { width: 20px; height: 20px; }
+.btn-menu .fermer, .menu-ouvert .btn-menu .ouvrir { display: none; }
+.menu-ouvert .btn-menu .fermer { display: inline; }
+
+.nav { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--bordure-ui); box-shadow: 0 12px 24px rgba(0, 0, 0, .12); }
+.menu-ouvert .nav { display: block; }
+.nav ul { display: flex; flex-direction: column; margin: 0; padding: 8px var(--marge) 16px; list-style: none; }
+.nav a { display: block; min-height: 48px; padding: 14px 4px; border-bottom: 1px solid var(--bordure); color: var(--texte); font-size: 1.05rem; text-decoration: none; }
+.nav a:hover { background: var(--primaire-clair); }
+/* Page courante : couleur + graisse + barre (jamais la couleur seule) */
+.nav a[aria-current] { padding-left: 14px; box-shadow: inset 4px 0 0 var(--primaire); color: var(--primaire); font-weight: 600; }
+
+/* ---------- 5. Fil d'Ariane ---------- */
+.ariane { margin: 24px 0 8px; color: var(--texte-2); font-size: 0.93rem; }
+.ariane ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.ariane li + li::before { content: "›"; margin-right: 6px; }
+
+/* ---------- 6. Accueil ---------- */
+.intro { padding: 32px 0 0; }
+.titre-section { margin: 40px 0 16px; }
+.grille-articles { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.carte { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--surface); }
+.carte h3 { margin: 0; }
+.carte h3 a { color: var(--texte); text-decoration: none; }
+.carte h3 a:hover { color: var(--primaire); text-decoration: underline; }
+.carte p { margin: 0; color: var(--texte-2); }
+.carte .lire { margin-top: auto; }
+.carte-une { border-color: var(--bordure-ui); }
+.carte-une h3 { font-size: 1.4rem; }
+.carte-une-texte { display: flex; flex-direction: column; gap: 12px; }
+.carte-une .illu { display: none; }  /* schéma masqué sur smartphone : l'essentiel d'abord */
+
+/* 2 tuiles par ligne si la place le permet, 1 seule sur les très petits écrans (320 px) */
+.grille-cat { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.grille-cat li { display: flex; }
+.tuile { flex: 1; display: flex; flex-direction: column; gap: 6px; min-height: 44px; padding: 16px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); background: var(--surface); color: var(--texte); text-decoration: none; }
+.tuile:hover { border-color: var(--primaire); background: var(--primaire-clair); }
+.tuile svg { width: 32px; height: 32px; color: var(--primaire); }
+.tuile strong { font-size: 1.1rem; }
+.tuile span { display: none; color: var(--texte-2); font-size: 0.93rem; }
+
+/* ---------- 7. Liste d'une catégorie ---------- */
+.mise-en-page { display: grid; grid-template-columns: 1fr; margin-top: 8px; }
+.colonne { display: none; }  /* colonne latérale masquée sur smartphone */
+.entete-cat { display: flex; flex-direction: column; gap: 12px; padding: 8px 0 24px; border-bottom: 1px solid var(--bordure); }
+.entete-cat .chapo { margin: 0; }
+.picto { flex: none; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--primaire-clair); color: var(--primaire); }
+.picto svg { width: 26px; height: 26px; }
+.barre-liste { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 20px 0 8px; }
+.barre-liste .meta { margin: 0; }
+.tri { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.tri label { font-size: 0.93rem; }
+.liste { margin: 0; padding: 0; list-style: none; }
+.liste li { padding: 22px 0; border-bottom: 1px solid var(--bordure); }
+.liste h2 { margin: 6px 0 8px; font-size: 1.2rem; }
+.liste h2 a { color: var(--texte); text-decoration: none; }
+.liste h2 a:hover { color: var(--primaire); text-decoration: underline; }
+.liste p { max-width: 44em; margin: 0 0 10px; color: var(--texte-2); }
+.liste .meta { margin: 0; }
+
+/* Pagination : « Page 1 sur 3 » + « Suivant » sur smartphone */
+.pagination { margin: 32px 0 0; }
+.pagination ul { display: flex; justify-content: space-between; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.pagination a, .pagination li > span { display: flex; align-items: center; justify-content: center; gap: 6px; min-width: 44px; min-height: 44px; padding: 0 14px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); text-decoration: none; }
+.pagination [aria-current] { border-color: var(--primaire); background: var(--primaire); color: #fff; font-weight: 700; }
+.pagination .pg-num { display: none; }
+.pagination .pg-info span { padding: 0; border: 0; color: var(--texte-2); }
+
+/* ---------- 8. Détail d'un article ---------- */
+.article-entete { max-width: 760px; padding: 8px 0 24px; }
+.article-entete h1 { margin-top: 12px; }
+.auteur { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+.auteur .meta { margin: 0; }
+.sommaire-mobile { margin: 0 0 24px; padding: 0 16px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); background: var(--surface); }
+.sommaire-mobile summary { display: flex; align-items: center; min-height: 48px; font-weight: 600; cursor: pointer; }
+.sommaire-mobile ol { margin: 0 0 12px; }
+.corps { max-width: 68ch; font-family: var(--police-lecture); font-size: 1.08rem; line-height: 1.75; }
+.corps h2 { margin-top: 1.6em; font-family: var(--police); font-size: 1.5rem; }
+.corps p { margin: 0 0 1.1em; }
+.corps ul { margin: 0 0 1.1em; padding-left: 1.2em; }
+.corps blockquote { margin: 1.5em 0; padding: 4px 0 4px 20px; border-left: 4px solid var(--primaire); color: var(--texte-2); font-style: italic; }
+figure { margin: 1.8em 0; }
+.illu-figure svg { display: block; width: 100%; height: auto; }
+.illu-figure { padding: 20px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--surface); }
+.photo { display: block; width: 320px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); }
+figcaption { margin-top: 8px; color: var(--texte-2); font-family: var(--police); font-size: .9rem; }
+.sommaire ol { margin: 0; padding-left: 20px; }
+.sommaire li { padding: 6px 0; }
+.sommaire a[aria-current] { font-weight: 700; }
+.pied-article { max-width: 68ch; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--bordure); }
+.pied-article .meta { margin: 0; }
+.prec-suiv { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+.prec-suiv a { display: block; padding: 16px 20px; border: 1px solid var(--bordure-ui); border-radius: var(--rayon); background: var(--surface); text-decoration: none; }
+.prec-suiv small { display: block; color: var(--texte-2); }
+.prec-suiv strong { color: var(--texte); }
+.retour-liste { margin-top: 20px; }
+
+/* ---------- 9. À propos ---------- */
+.apropos { max-width: 808px; margin-left: max(0px, calc((100% - var(--largeur)) / 2)); }
+.apropos h2 { margin-top: 40px; }
+.carte-auteur { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; margin: 24px 0; padding: 20px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--surface); }
+.carte-auteur .avatar { width: 88px; height: 88px; font-size: 1.8rem; }
+.carte-auteur h3 { margin-bottom: 4px; }
+.carte-auteur .meta { margin: 0 0 10px; }
+.carte-auteur p:last-child { margin: 0; }
+.engagements { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0; padding: 0; list-style: none; }
+.engagements li { padding: 20px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--surface); }
+.engagements svg { width: 28px; height: 28px; color: var(--primaire); }
+.engagements h3 { margin: 8px 0 6px; }
+.engagements p { margin: 0; color: var(--texte-2); font-size: .97rem; }
+
+/* ---------- 10. Pied de page ---------- */
+.pied { margin-top: 56px; padding: 40px 0; background: var(--surface); border-top: 1px solid var(--bordure); color: var(--texte-2); font-size: .93rem; }
+.pied .conteneur { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.pied h2 { color: var(--texte); font-size: .95rem; }
+.pied ul { margin: 0; padding: 0; list-style: none; }
+.pied li a { display: inline-block; padding: 4px 0; }
+.sobriete { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 6px 12px; border: 1px solid var(--bordure-ui); border-radius: 999px; }
+
+/* ==========================================================================
+   Tablette : à partir de 761 px
+   ========================================================================== */
+@media (min-width: 761px) {
+  :root { --marge: 24px; }
+  body { font-size: 1.0625rem; }
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 1.6rem; }
+  .entete .conteneur { min-height: 72px; }
+
+  .intro { padding: 56px 0 8px; }
+  .intro h1 { max-width: 16em; font-size: 2.7rem; }
+  .titre-section { margin: 56px 0 20px; }
+  .grille-articles { grid-template-columns: repeat(2, 1fr); }
+  .grille-articles > .carte:last-child { grid-column: 1 / -1; }
+  .carte { padding: 24px; }
+  .carte-une { grid-column: 1 / -1; display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; padding: 32px; }
+  .carte-une h3 { font-size: 1.75rem; }
+  .carte-une .illu { display: flex; align-items: center; justify-content: center; min-height: 200px; border-radius: var(--rayon); background: var(--primaire-clair); }
+  .grille-cat { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .tuile { padding: 20px; }
+  .tuile span { display: block; }
+
+  .mise-en-page { grid-template-columns: 1fr 240px; gap: 32px; }
+  .colonne { display: block; padding-top: 24px; }
+  .colonne-sommaire { padding-top: 8px; }
+  .entete-cat { flex-direction: row; gap: 20px; }
+  .picto { width: 64px; height: 64px; }
+  .picto svg { width: 34px; height: 34px; }
+  .barre-liste { flex-direction: row; justify-content: space-between; align-items: center; }
+  .liste li { padding: 28px 0; }
+  .liste h2 { font-size: 1.4rem; }
+  .pagination ul { justify-content: flex-start; }
+  .pagination .pg-num { display: block; }
+  .pagination .pg-info { display: none; }
+
+  .corps { font-size: 1.15rem; }
+  .sommaire-mobile { display: none; }  /* le sommaire passe dans la colonne */
+  .sommaire { position: sticky; top: 24px; }
+  .prec-suiv { grid-template-columns: 1fr 1fr; }
+  .prec-suiv .suiv { text-align: right; }
+
+  .carte-auteur { flex-direction: row; padding: 28px; }
+  .engagements { grid-template-columns: repeat(3, 1fr); }
+
+  .pied { margin-top: 80px; }
+  .pied .conteneur { grid-template-columns: 2fr 1fr 1fr; }
+}
+
+/* ==========================================================================
+   Ordinateur : à partir de 1025 px (menu déplié, grilles complètes)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .btn-menu { display: none; }
+  .nav { display: block; position: static; background: none; border: 0; box-shadow: none; }
+  .nav ul { flex-direction: row; gap: 4px; padding: 0; }
+  .nav a { min-height: 0; padding: 10px 12px; border-bottom: 0; border-radius: var(--rayon); font-size: 0.97rem; }
+  .nav a[aria-current] { padding-left: 12px; border-radius: 0; box-shadow: inset 0 -3px 0 var(--primaire); }
+
+  .grille-articles { grid-template-columns: repeat(3, 1fr); }
+  .grille-articles > .carte:last-child { grid-column: auto; }
+  .grille-cat { grid-template-columns: repeat(4, 1fr); }
+  .mise-en-page { grid-template-columns: 1fr 280px; gap: 56px; }
+}
+
+/* ==========================================================================
+   Impression : on n'imprime que le contenu
+   ========================================================================== */
+@media print {
+  .evitement, .btn-menu, .nav, .ariane, .colonne, .sommaire-mobile, .prec-suiv, .pied { display: none; }
+  body { background: #fff; }
+  .corps { max-width: none; }
+}

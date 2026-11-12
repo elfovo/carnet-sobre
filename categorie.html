@@ -1,87 +1,143 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Éco-conception — Carnet Sobre</title>
-<meta name="description" content="Carnet Sobre, le blog du numérique responsable : éco-conception, accessibilité et développement web.">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Éco-conception : tous les articles — Carnet Sobre</title>
+  <meta name="description" content="Tous les articles de Carnet Sobre sur l'éco-conception web : poids des pages, formats d'image, polices, mesure de l'empreinte.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.min.css">
+  <script src="js/menu.js" defer></script>
+  <noscript><style>.btn-menu{display:none}.nav{display:block;position:static;box-shadow:none}</style></noscript>
 </head>
 <body>
-<a class="evitement" href="#contenu">Aller au contenu</a>
-<header class="entete">
-  <div class="conteneur">
-    <a class="logo" href="index.html"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#1F5C3F"/><path d="M7 21c0-8 4-13 14-14-1 9-5 14-14 14zM7 21l8-8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Carnet Sobre</a>
-    <button class="btn-menu" type="button" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="ouvrir">Menu</span><span class="fermer">Fermer</span></button>
-    <nav class="nav" id="menu" aria-label="Menu principal"><ul><li><a href="index.html">Accueil</a></li><li><a href="categorie.html" aria-current="page">Éco-conception</a></li><li><a href="#">Accessibilité</a></li><li><a href="#">Développement web</a></li><li><a href="#">Outils</a></li><li><a href="a-propos.html">À propos</a></li></ul></nav>
-    
-  </div>
-</header>
-<div class="conteneur">
-  <nav class="ariane" aria-label="Fil d'Ariane"><span class="n" style="left:-36px;top:-4px" aria-hidden="true">1</span><ol><li><a href="index.html">Accueil</a></li><li aria-current="page">Éco-conception</li></ol></nav>
-</div>
-<main id="contenu" class="conteneur mise-en-page">
-  <div>
-    <div class="entete-cat"><span class="n" style="left:-36px;top:20px" aria-hidden="true">2</span>
-      <div class="picto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg></div>
-      <div><h1>Éco-conception</h1><p class="chapo" style="margin:0">Concevoir des pages plus légères : images, polices, scripts, hébergement. 14 articles.</p></div>
-    </div>
-    <div class="barre-liste"><span class="n" style="right:-36px;top:6px" aria-hidden="true">3</span>
-      <p class="meta" style="margin:0">Articles 1 à 5 sur 14</p>
-      <div><label for="tri">Trier par</label><select id="tri"><option>Plus récents</option><option>Plus lus</option><option>Temps de lecture</option></select></div>
-    </div>
-    <ul class="liste"><li><span class="n" style="left:-40px;top:30px" aria-hidden="true">4</span>
-      <p class="meta"><time>14 octobre 2026</time> · 6 min de lecture</p>
-      <h2><a href="article.html">Diviser par trois le poids d'une page : retour d'expérience</a></h2>
-      <p>Images converties, polices système, scripts supprimés : les six changements qui ont fait passer notre page d'accueil de 2,4 Mo à 780 Ko.</p>
-      <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Diviser par trois le poids d'une page : retour d'expérience</span> →</a>
-    </li><li>
-      <p class="meta"><time>10 octobre 2026</time> · 5 min de lecture</p>
-      <h2><a href="article.html">WebP, AVIF, SVG : quel format d'image choisir ?</a></h2>
-      <p>Une photo de 240 Ko peut descendre sous les 120 Ko sans perte visible. Comparatif des formats, et quand utiliser chacun.</p>
-      <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : WebP, AVIF, SVG : quel format d'image choisir ?</span> →</a>
-    </li><li>
-      <p class="meta"><time>2 octobre 2026</time> · 5 min de lecture</p>
-      <h2><a href="article.html">Le lazy loading expliqué en cinq minutes</a></h2>
-      <p>Ne charger une image que lorsqu'elle arrive à l'écran : un attribut HTML suffit, à condition d'éviter deux pièges.</p>
-      <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le lazy loading expliqué en cinq minutes</span> →</a>
-    </li><li>
-      <p class="meta"><time>16 septembre 2026</time> · 8 min de lecture</p>
-      <h2><a href="article.html">Mesurer l'empreinte d'un site avec Ecoindex</a></h2>
-      <p>Poids, nombre de requêtes, complexité du DOM : comment Ecoindex calcule sa note, et ce qu'il ne mesure pas.</p>
-      <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Mesurer l'empreinte d'un site avec Ecoindex</span> →</a>
-    </li><li>
-      <p class="meta"><time>9 septembre 2026</time> · 4 min de lecture</p>
-      <h2><a href="article.html">Polices système : la typographie qui ne pèse rien</a></h2>
-      <p>Une police web coûte souvent 100 Ko et un affichage retardé. Les polices déjà installées font très bien l'affaire.</p>
-      <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Polices système : la typographie qui ne pèse rien</span> →</a>
-    </li></ul>
-    <nav class="pagination" aria-label="Pagination"><span class="n" style="left:-44px;top:7px" aria-hidden="true">5</span><ul>
-      <li class="pg-num"><span aria-current="page">1</span></li><li class="pg-info"><span>Page 1 sur 3</span></li><li class="pg-num"><a href="#">2</a></li><li class="pg-num"><a href="#">3</a></li>
-      <li><a href="#">Suivant<span class="sr-only"> : page 2</span> →</a></li></ul></nav>
-  </div>
-  <aside class="colonne" aria-label="Autres catégories" style="padding-top:24px;position:relative">
-    <span class="n" style="left:-36px;top:30px" aria-hidden="true">6</span>
-    <section class="encart"><h2>Catégories</h2><ul><li><a href="categorie.html" aria-current="page"><span>Éco-conception</span><span class="meta">14</span></a></li><li><a href="#"><span>Accessibilité</span><span class="meta">9</span></a></li><li><a href="#"><span>Développement web</span><span class="meta">11</span></a></li><li><a href="#"><span>Outils</span><span class="meta">6</span></a></li></ul></section>
-    <section class="encart"><h2>Suivre le blog</h2><p>Recevez les nouveaux articles dans votre lecteur, sans inscription ni adresse e-mail.</p><a class="bouton bouton-2" href="#">Flux RSS</a></section>
-  </aside>
-</main>
-<footer class="pied">
-  <div class="conteneur">
-    
-    <div>
+  <a class="evitement" href="#contenu">Aller au contenu</a>
+  <header class="entete">
+    <div class="conteneur">
       <a class="logo" href="index.html"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#1F5C3F"/><path d="M7 21c0-8 4-13 14-14-1 9-5 14-14 14zM7 21l8-8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Carnet Sobre</a>
-      <p>Le blog du numérique responsable. Un article chaque mardi, sans publicité ni traceur.</p>
-      <span class="sobriete"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg> Page légère : moins de 30 Ko</span>
+      <button class="btn-menu" type="button" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="ouvrir">Menu</span><span class="fermer">Fermer</span></button>
+      <nav class="nav" id="menu" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="categorie.html" aria-current="page">Éco-conception</a></li>
+          <li><a href="#">Accessibilité</a></li>
+          <li><a href="#">Développement web</a></li>
+          <li><a href="#">Outils</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+        </ul>
+      </nav>
     </div>
-    <div><h2>Le blog</h2><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="#">Flux RSS</a></li><li><a href="#">Plan du site</a></li></ul></div>
-    <div><h2>Informations</h2><ul><li><a href="#">Mentions légales</a></li><li><a href="#">Accessibilité : partiellement conforme</a></li><li><a href="#">Données personnelles</a></li></ul></div>
+  </header>
+  <div class="conteneur">
+    <nav class="ariane" aria-label="Fil d'Ariane">
+      <ol><li><a href="index.html">Accueil</a></li><li aria-current="page">Éco-conception</li></ol>
+    </nav>
   </div>
-</footer>
-<script>
-/* Seul script du site (≈ 300 octets) : ouverture du menu sur mobile */
-var b=document.querySelector('.btn-menu');
-b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));document.body.classList.toggle('menu-ouvert',!o);});
-</script>
+  <main id="contenu" class="conteneur mise-en-page">
+    <div>
+      <div class="entete-cat">
+        <div class="picto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg></div>
+        <div>
+          <h1>Éco-conception</h1>
+          <p class="chapo">Concevoir des pages plus légères : images, polices, scripts, hébergement. 14 articles.</p>
+        </div>
+      </div>
+      <div class="barre-liste">
+        <p class="meta">Articles 1 à 5 sur 14</p>
+        <form class="tri" action="categorie.html" method="get">
+          <label for="tri">Trier par</label>
+          <select id="tri" name="tri">
+            <option value="recents">Plus récents</option>
+            <option value="lus">Plus lus</option>
+            <option value="duree">Temps de lecture</option>
+          </select>
+          <button class="bouton bouton-2" type="submit">Trier</button>
+        </form>
+      </div>
+      <ul class="liste">
+        <li>
+          <p class="meta"><time datetime="2026-10-14">14 octobre 2026</time> · 6 min de lecture</p>
+          <h2><a href="article.html">Diviser par trois le poids d'une page : retour d'expérience</a></h2>
+          <p>Images converties, polices système, scripts supprimés : les six changements qui ont fait passer notre page d'accueil de 2,4 Mo à 780 Ko.</p>
+          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Diviser par trois le poids d'une page : retour d'expérience</span> →</a>
+        </li>
+        <li>
+          <p class="meta"><time datetime="2026-10-10">10 octobre 2026</time> · 5 min de lecture</p>
+          <h2><a href="article.html">WebP, AVIF, SVG : quel format d'image choisir ?</a></h2>
+          <p>Une photo de 240 Ko peut descendre sous les 120 Ko sans perte visible. Comparatif des formats, et quand utiliser chacun.</p>
+          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : WebP, AVIF, SVG : quel format d'image choisir ?</span> →</a>
+        </li>
+        <li>
+          <p class="meta"><time datetime="2026-10-02">2 octobre 2026</time> · 5 min de lecture</p>
+          <h2><a href="article.html">Le lazy loading expliqué en cinq minutes</a></h2>
+          <p>Ne charger une image que lorsqu'elle arrive à l'écran : un attribut HTML suffit, à condition d'éviter deux pièges.</p>
+          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le lazy loading expliqué en cinq minutes</span> →</a>
+        </li>
+        <li>
+          <p class="meta"><time datetime="2026-09-16">16 septembre 2026</time> · 8 min de lecture</p>
+          <h2><a href="article.html">Mesurer l'empreinte d'un site avec Ecoindex</a></h2>
+          <p>Poids, nombre de requêtes, complexité du DOM : comment Ecoindex calcule sa note, et ce qu'il ne mesure pas.</p>
+          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Mesurer l'empreinte d'un site avec Ecoindex</span> →</a>
+        </li>
+        <li>
+          <p class="meta"><time datetime="2026-09-09">9 septembre 2026</time> · 4 min de lecture</p>
+          <h2><a href="article.html">Polices système : la typographie qui ne pèse rien</a></h2>
+          <p>Une police web coûte souvent 100 Ko et un affichage retardé. Les polices déjà installées font très bien l'affaire.</p>
+          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Polices système : la typographie qui ne pèse rien</span> →</a>
+        </li>
+      </ul>
+      <nav class="pagination" aria-label="Pagination">
+        <ul>
+          <li class="pg-num"><span aria-current="page"><span class="sr-only">Page </span>1</span></li>
+          <li class="pg-info"><span>Page 1 sur 3</span></li>
+          <li class="pg-num"><a href="#"><span class="sr-only">Page </span>2</a></li>
+          <li class="pg-num"><a href="#"><span class="sr-only">Page </span>3</a></li>
+          <li><a href="#">Suivant<span class="sr-only"> : page 2</span> →</a></li>
+        </ul>
+      </nav>
+    </div>
+    <aside class="colonne" aria-label="Autres catégories et abonnement">
+      <section class="encart">
+        <h2>Catégories</h2>
+        <ul>
+          <li><a href="categorie.html" aria-current="page"><span>Éco-conception</span><span class="meta">14</span></a></li>
+          <li><a href="#"><span>Accessibilité</span><span class="meta">9</span></a></li>
+          <li><a href="#"><span>Développement web</span><span class="meta">11</span></a></li>
+          <li><a href="#"><span>Outils</span><span class="meta">6</span></a></li>
+        </ul>
+      </section>
+      <section class="encart">
+        <h2>Suivre le blog</h2>
+        <p>Recevez les nouveaux articles dans votre lecteur, sans inscription ni adresse e-mail.</p>
+        <a class="bouton bouton-2" href="#">Flux RSS</a>
+      </section>
+    </aside>
+  </main>
+  <footer class="pied">
+    <div class="conteneur">
+      <div>
+        <a class="logo" href="index.html"><svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#1F5C3F"/><path d="M7 21c0-8 4-13 14-14-1 9-5 14-14 14zM7 21l8-8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Carnet Sobre</a>
+        <p>Le blog du numérique responsable. Un article chaque mardi, sans publicité ni traceur.</p>
+        <p class="sobriete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg> Page légère : moins de 50 Ko</p>
+      </div>
+      <div>
+        <h2>Le blog</h2>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="#">Flux RSS</a></li>
+          <li><a href="#">Plan du site</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Accessibilité : partiellement conforme</a></li>
+          <li><a href="#">Données personnelles</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
