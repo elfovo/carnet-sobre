@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carnet Sobre — le blog du numérique responsable</title>
   <meta name="description" content="Carnet Sobre, le blog du numérique responsable : des articles courts sur l'éco-conception, l'accessibilité et le développement web.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'sha256-XJFHMTB9j3Rgw8mla7fTEP/qGw23fdnotCvBWZ7KNmM='; img-src 'self'; base-uri 'none'; form-action 'self'">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.min.css">
-  <script src="js/menu.js" defer></script>
+  <script src="js/blog.min.js" defer></script>
   <noscript><style>.btn-menu{display:none}.nav{display:block;position:static;box-shadow:none}</style></noscript>
 </head>
 <body>
@@ -32,20 +33,50 @@
     <section class="intro">
       <h1>Le numérique responsable, expliqué simplement</h1>
       <p class="chapo">Des articles courts et concrets pour concevoir des sites plus légers, plus accessibles et plus durables.</p>
+      <div class="bienvenue-bloc" hidden>
+        <form class="bienvenue" id="form-bienvenue" novalidate>
+          <label for="prenom">Votre prénom</label>
+          <div class="bienvenue-ligne">
+            <input id="prenom" name="prenom" type="text" autocomplete="given-name" maxlength="40" spellcheck="false" aria-describedby="prenom-aide prenom-erreur">
+            <button class="bouton" type="submit">Afficher mon message</button>
+          </div>
+          <p class="aide" id="prenom-aide">Votre prénom n'est ni enregistré ni envoyé : il reste dans votre navigateur.</p>
+          <p class="erreur" id="prenom-erreur" role="alert"></p>
+        </form>
+        <p class="message-bienvenue" id="message-bienvenue" role="status"></p>
+      </div>
     </section>
 
     <section aria-labelledby="titre-recents">
-      <h2 class="titre-section" id="titre-recents">Articles récents</h2>
-      <div class="grille-articles">
-        <article class="carte carte-une">
+      <div class="entete-section">
+        <h2 class="titre-section" id="titre-recents">Articles récents</h2>
+        <div class="barre-filtre" hidden>
+          <label for="filtre-categorie">Catégorie</label>
+          <select id="filtre-categorie">
+            <option value="toutes">Toutes les catégories</option>
+            <option value="eco-conception">Éco-conception</option>
+            <option value="accessibilite">Accessibilité</option>
+            <option value="developpement-web">Développement web</option>
+            <option value="outils">Outils</option>
+          </select>
+          <p class="meta" id="filtre-resultat" role="status"></p>
+        </div>
+      </div>
+      <div class="grille-articles" data-filtrable>
+        <article class="carte carte-une" data-categorie="eco-conception">
           <div class="carte-une-texte">
-            <a class="tag" href="categorie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg>Éco-conception</a>
+            <div class="carte-haut">
+              <a class="tag" href="categorie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg>Éco-conception</a>
+              <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-1 illu-1" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Diviser par trois le poids d'une page</span></button>
+            </div>
             <h3><a href="article.html">Diviser par trois le poids d'une page : retour d'expérience</a></h3>
-            <p class="meta"><time datetime="2026-10-14">14 octobre 2026</time> · 6 min de lecture</p>
-            <p>Images converties, polices système, scripts supprimés : le détail des six changements qui ont fait passer notre page d'accueil de 2,4 Mo à 780 Ko.</p>
-            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Diviser par trois le poids d'une page</span> →</a>
+            <div class="carte-contenu" id="contenu-1">
+              <p class="meta"><time datetime="2026-10-14">14 octobre 2026</time> · 6 min de lecture</p>
+              <p>Images converties, polices système, scripts supprimés : le détail des six changements qui ont fait passer notre page d'accueil de 2,4 Mo à 780 Ko.</p>
+              <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Diviser par trois le poids d'une page</span> →</a>
+            </div>
           </div>
-          <div class="illu"><svg width="260" height="170" viewBox="0 0 260 170" role="img" aria-label="Schéma : une page de 2,4 Mo réduite à 780 Ko">
+          <div class="illu" id="illu-1"><svg width="260" height="170" viewBox="0 0 260 170" role="img" aria-label="Schéma : une page de 2,4 Mo réduite à 780 Ko">
             <rect x="20" y="20" width="90" height="130" rx="6" fill="#fff" stroke="#8C8A84"/><rect x="32" y="34" width="66" height="40" fill="#DDDAD3"/><rect x="32" y="84" width="66" height="8" fill="#DDDAD3"/><rect x="32" y="98" width="50" height="8" fill="#DDDAD3"/>
             <text x="65" y="138" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#4A4A4A">2,4 Mo</text>
             <path d="M122 85h22" stroke="#1F5C3F" stroke-width="3" stroke-linecap="round"/><path d="M138 78l8 7-8 7" fill="none" stroke="#1F5C3F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,26 +84,77 @@
             <text x="195" y="138" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#1F5C3F">780 Ko</text>
           </svg></div>
         </article>
-        <article class="carte">
-          <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="1.2" fill="currentColor"/><path d="M7 10h10M12 10v4l-3 4M12 14l3 4"/></svg>Accessibilité</a>
+        <article class="carte" data-categorie="eco-conception">
+          <div class="carte-haut">
+            <a class="tag" href="categorie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg>Éco-conception</a>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-2" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : WebP, AVIF, SVG : quel format d'image choisir ?</span></button>
+          </div>
+          <h3><a href="article.html">WebP, AVIF, SVG : quel format d'image choisir ?</a></h3>
+          <div class="carte-contenu" id="contenu-2">
+            <p class="meta"><time datetime="2026-10-10">10 octobre 2026</time> · 5 min de lecture</p>
+            <p>Une photo de 240 Ko peut descendre sous les 120 Ko sans perte visible. Comparatif des formats, et quand utiliser chacun.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : WebP, AVIF, SVG : quel format d'image choisir ?</span> →</a>
+          </div>
+        </article>
+        <article class="carte" data-categorie="accessibilite">
+          <div class="carte-haut">
+            <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="1.2" fill="currentColor"/><path d="M7 10h10M12 10v4l-3 4M12 14l3 4"/></svg>Accessibilité</a>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-3" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Contrastes de couleurs : les seuils à retenir</span></button>
+          </div>
           <h3><a href="article.html">Contrastes de couleurs : les seuils à retenir</a></h3>
-          <p class="meta"><time datetime="2026-10-07">7 octobre 2026</time> · 4 min de lecture</p>
-          <p>4,5:1 pour le texte courant, 3:1 pour les gros titres et les icônes : les règles du RGAA, et comment les vérifier en deux clics.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Contrastes de couleurs : les seuils à retenir</span> →</a>
+          <div class="carte-contenu" id="contenu-3">
+            <p class="meta"><time datetime="2026-10-07">7 octobre 2026</time> · 4 min de lecture</p>
+            <p>4,5:1 pour le texte courant, 3:1 pour les gros titres et les icônes : les règles du RGAA, et comment les vérifier en deux clics.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Contrastes de couleurs : les seuils à retenir</span> →</a>
+          </div>
         </article>
-        <article class="carte">
-          <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>Développement web</a>
+        <article class="carte" data-categorie="eco-conception">
+          <div class="carte-haut">
+            <a class="tag" href="categorie.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-9 5-15 15-16-1 10-6 16-15 16z"/><path d="M5 20l9-9"/></svg>Éco-conception</a>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-4" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Le lazy loading expliqué en cinq minutes</span></button>
+          </div>
+          <h3><a href="article.html">Le lazy loading expliqué en cinq minutes</a></h3>
+          <div class="carte-contenu" id="contenu-4">
+            <p class="meta"><time datetime="2026-10-02">2 octobre 2026</time> · 5 min de lecture</p>
+            <p>Ne charger une image que lorsqu'elle arrive à l'écran : un attribut HTML suffit, à condition d'éviter deux pièges.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le lazy loading expliqué en cinq minutes</span> →</a>
+          </div>
+        </article>
+        <article class="carte" data-categorie="developpement-web">
+          <div class="carte-haut">
+            <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>Développement web</a>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-5" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Le responsive en mobile first, pas à pas</span></button>
+          </div>
           <h3><a href="article.html">Le responsive en mobile first, pas à pas</a></h3>
-          <p class="meta"><time datetime="2026-09-30">30 septembre 2026</time> · 7 min de lecture</p>
-          <p>Partir du petit écran, puis enrichir : une méthode qui donne des feuilles de style plus courtes et des pages plus rapides.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le responsive en mobile first, pas à pas</span> →</a>
+          <div class="carte-contenu" id="contenu-5">
+            <p class="meta"><time datetime="2026-09-30">30 septembre 2026</time> · 7 min de lecture</p>
+            <p>Partir du petit écran, puis enrichir : une méthode qui donne des feuilles de style plus courtes et des pages plus rapides.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le responsive en mobile first, pas à pas</span> →</a>
+          </div>
         </article>
-        <article class="carte">
-          <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18a9 9 0 1 1 18 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.3" fill="currentColor"/></svg>Outils</a>
+        <article class="carte" data-categorie="accessibilite">
+          <div class="carte-haut">
+            <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="1.2" fill="currentColor"/><path d="M7 10h10M12 10v4l-3 4M12 14l3 4"/></svg>Accessibilité</a>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-6" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Navigation au clavier : tester son site en dix minutes</span></button>
+          </div>
+          <h3><a href="article.html">Navigation au clavier : tester son site en dix minutes</a></h3>
+          <div class="carte-contenu" id="contenu-6">
+            <p class="meta"><time datetime="2026-09-26">26 septembre 2026</time> · 4 min de lecture</p>
+            <p>Tab, Maj+Tab, Entrée, Échap : un parcours simple pour repérer les pièges qu'un utilisateur au clavier rencontrera.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Navigation au clavier : tester son site en dix minutes</span> →</a>
+          </div>
+        </article>
+        <article class="carte" data-categorie="outils">
+          <div class="carte-haut">
+            <a class="tag" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18a9 9 0 1 1 18 0"/><path d="M12 18l4-6"/><circle cx="12" cy="18" r="1.3" fill="currentColor"/></svg>Outils</a>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="contenu-7" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Cinq extensions pour auditer un site</span></button>
+          </div>
           <h3><a href="article.html">Cinq extensions pour auditer un site</a></h3>
-          <p class="meta"><time datetime="2026-09-23">23 septembre 2026</time> · 5 min de lecture</p>
-          <p>Ecoindex, WAVE, Lighthouse… Ce que mesure chaque outil, et comment lire leurs résultats sans se tromper.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Cinq extensions pour auditer un site</span> →</a>
+          <div class="carte-contenu" id="contenu-7">
+            <p class="meta"><time datetime="2026-09-23">23 septembre 2026</time> · 5 min de lecture</p>
+            <p>Ecoindex, WAVE, Lighthouse… Ce que mesure chaque outil, et comment lire leurs résultats sans se tromper.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Cinq extensions pour auditer un site</span> →</a>
+          </div>
         </article>
       </div>
     </section>

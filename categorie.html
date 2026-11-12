@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Éco-conception : tous les articles — Carnet Sobre</title>
   <meta name="description" content="Tous les articles de Carnet Sobre sur l'éco-conception web : poids des pages, formats d'image, polices, mesure de l'empreinte.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'sha256-XJFHMTB9j3Rgw8mla7fTEP/qGw23fdnotCvBWZ7KNmM='; img-src 'self'; base-uri 'none'; form-action 'self'">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.min.css">
-  <script src="js/menu.js" defer></script>
+  <script src="js/blog.min.js" defer></script>
   <noscript><style>.btn-menu{display:none}.nav{display:block;position:static;box-shadow:none}</style></noscript>
 </head>
 <body>
@@ -57,33 +58,58 @@
       <ul class="liste">
         <li>
           <p class="meta"><time datetime="2026-10-14">14 octobre 2026</time> · 6 min de lecture</p>
-          <h2><a href="article.html">Diviser par trois le poids d'une page : retour d'expérience</a></h2>
-          <p>Images converties, polices système, scripts supprimés : les six changements qui ont fait passer notre page d'accueil de 2,4 Mo à 780 Ko.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Diviser par trois le poids d'une page : retour d'expérience</span> →</a>
+          <div class="ligne-titre">
+            <h2><a href="article.html">Diviser par trois le poids d'une page : retour d'expérience</a></h2>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="resume-1" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Diviser par trois le poids d'une page : retour d'expérience</span></button>
+          </div>
+          <div class="liste-contenu" id="resume-1">
+            <p>Images converties, polices système, scripts supprimés : les six changements qui ont fait passer notre page d'accueil de 2,4 Mo à 780 Ko.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Diviser par trois le poids d'une page : retour d'expérience</span> →</a>
+          </div>
         </li>
         <li>
           <p class="meta"><time datetime="2026-10-10">10 octobre 2026</time> · 5 min de lecture</p>
-          <h2><a href="article.html">WebP, AVIF, SVG : quel format d'image choisir ?</a></h2>
-          <p>Une photo de 240 Ko peut descendre sous les 120 Ko sans perte visible. Comparatif des formats, et quand utiliser chacun.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : WebP, AVIF, SVG : quel format d'image choisir ?</span> →</a>
+          <div class="ligne-titre">
+            <h2><a href="article.html">WebP, AVIF, SVG : quel format d'image choisir ?</a></h2>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="resume-2" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : WebP, AVIF, SVG : quel format d'image choisir ?</span></button>
+          </div>
+          <div class="liste-contenu" id="resume-2">
+            <p>Une photo de 240 Ko peut descendre sous les 120 Ko sans perte visible. Comparatif des formats, et quand utiliser chacun.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : WebP, AVIF, SVG : quel format d'image choisir ?</span> →</a>
+          </div>
         </li>
         <li>
           <p class="meta"><time datetime="2026-10-02">2 octobre 2026</time> · 5 min de lecture</p>
-          <h2><a href="article.html">Le lazy loading expliqué en cinq minutes</a></h2>
-          <p>Ne charger une image que lorsqu'elle arrive à l'écran : un attribut HTML suffit, à condition d'éviter deux pièges.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le lazy loading expliqué en cinq minutes</span> →</a>
+          <div class="ligne-titre">
+            <h2><a href="article.html">Le lazy loading expliqué en cinq minutes</a></h2>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="resume-3" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Le lazy loading expliqué en cinq minutes</span></button>
+          </div>
+          <div class="liste-contenu" id="resume-3">
+            <p>Ne charger une image que lorsqu'elle arrive à l'écran : un attribut HTML suffit, à condition d'éviter deux pièges.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Le lazy loading expliqué en cinq minutes</span> →</a>
+          </div>
         </li>
         <li>
           <p class="meta"><time datetime="2026-09-16">16 septembre 2026</time> · 8 min de lecture</p>
-          <h2><a href="article.html">Mesurer l'empreinte d'un site avec Ecoindex</a></h2>
-          <p>Poids, nombre de requêtes, complexité du DOM : comment Ecoindex calcule sa note, et ce qu'il ne mesure pas.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Mesurer l'empreinte d'un site avec Ecoindex</span> →</a>
+          <div class="ligne-titre">
+            <h2><a href="article.html">Mesurer l'empreinte d'un site avec Ecoindex</a></h2>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="resume-4" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Mesurer l'empreinte d'un site avec Ecoindex</span></button>
+          </div>
+          <div class="liste-contenu" id="resume-4">
+            <p>Poids, nombre de requêtes, complexité du DOM : comment Ecoindex calcule sa note, et ce qu'il ne mesure pas.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Mesurer l'empreinte d'un site avec Ecoindex</span> →</a>
+          </div>
         </li>
         <li>
           <p class="meta"><time datetime="2026-09-09">9 septembre 2026</time> · 4 min de lecture</p>
-          <h2><a href="article.html">Polices système : la typographie qui ne pèse rien</a></h2>
-          <p>Une police web coûte souvent 100 Ko et un affichage retardé. Les polices déjà installées font très bien l'affaire.</p>
-          <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Polices système : la typographie qui ne pèse rien</span> →</a>
+          <div class="ligne-titre">
+            <h2><a href="article.html">Polices système : la typographie qui ne pèse rien</a></h2>
+            <button class="btn-replier" type="button" aria-expanded="true" aria-controls="resume-5" hidden><span class="libelle">Masquer</span><span class="sr-only"> l'article : Polices système : la typographie qui ne pèse rien</span></button>
+          </div>
+          <div class="liste-contenu" id="resume-5">
+            <p>Une police web coûte souvent 100 Ko et un affichage retardé. Les polices déjà installées font très bien l'affaire.</p>
+            <a class="lire" href="article.html">Lire l'article<span class="sr-only"> : Polices système : la typographie qui ne pèse rien</span> →</a>
+          </div>
         </li>
       </ul>
       <nav class="pagination" aria-label="Pagination">

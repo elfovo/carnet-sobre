@@ -1,0 +1,25 @@
+{
+  "name": "carnet-sobre",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blog Carnet Sobre : interface statique et fonctionnalités dynamiques (ECF TP DWWM, CCP1)",
+  "scripts": {
+    "test": "jest",
+    "test:couverture": "jest --coverage",
+    "test:navigateur": "node tests/navigateur.mjs"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "js/blog.js"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "playwright": "^1.65.0"
+  }
+}

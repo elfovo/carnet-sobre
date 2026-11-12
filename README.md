@@ -1,38 +1,47 @@
-# Carnet Sobre — interface statique (HTML / CSS)
+# Carnet Sobre — blog statique et fonctionnalités dynamiques
 
-Devoir ECF TP DWWM, CCP1 n°2 — Eliott Foveau.
+Devoirs ECF TP DWWM, CCP1 n°2 (interface statique) et n°3 (JavaScript) — Eliott Foveau.
 
 ## Contenu
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Page d'accueil : articles récents et accès aux catégories |
-| `categorie.html` | Liste des articles d'une catégorie (Éco-conception) |
+| `index.html` | Accueil : message de bienvenue, articles récents filtrables, catégories |
+| `categorie.html` | Liste des articles d'une catégorie (articles repliables) |
 | `article.html` | Détail d'un article |
 | `a-propos.html` | Page « À propos » |
 | `css/style.css` | Feuille de style source, commentée (mobile first) |
 | `css/style.min.css` | Même feuille, minifiée : c'est elle que chargent les pages |
-| `js/menu.js` | Seul script : ouverture du menu sur tablette et smartphone |
+| `js/blog.js` | Script source, commenté : menu, bienvenue, masquer / afficher, filtre |
+| `js/blog.min.js` | Même script, minifié : c'est lui que chargent les pages |
+| `tests/blog.test.js` | Tests unitaires (Jest + jsdom) |
+| `tests/navigateur.mjs` | Tests dans un vrai navigateur (Playwright + Chromium) |
 | `img/` | Capture de l'article, en AVIF, WebP et JPEG, en 1x et 2x |
-| `favicon.svg` | Icône de l'onglet (évite une requête en erreur 404) |
+| `favicon.svg`, `robots.txt` | Icône de l'onglet, consignes aux robots d'indexation |
 
 ## Ouvrir le site
 
-Aucune installation : ouvrir `index.html` dans un navigateur. Pour un test plus proche de la
-mise en ligne, servir le dossier avec un petit serveur local :
+Aucune installation : ouvrir `index.html` dans un navigateur. Le site n'a aucune dépendance.
+
+## Lancer les tests
+
+Les outils de test ne servent qu'au développement (ils ne sont jamais envoyés au visiteur) :
 
 ```
-python3 -m http.server 8000
+npm install
+npm test                    # 53 tests unitaires
+npm run test:couverture     # mêmes tests + taux de couverture de js/blog.js
+npx playwright install chromium
+npm run test:navigateur     # 10 tests dans Chromium
 ```
-
-puis ouvrir http://localhost:8000.
 
 ## Points d'attention
 
-- Les liens vers des pages hors du périmètre du devoir (autres catégories, mentions légales,
-  flux RSS, pages 2 et 3) pointent vers `#`.
-- Après une modification de `css/style.css`, régénérer `css/style.min.css` (par exemple avec
-  `npx csso css/style.css -o css/style.min.css`).
+- Après une modification de `css/style.css` ou de `js/blog.js`, régénérer les versions minifiées
+  (`npx csso css/style.css -o css/style.min.css` et `npx terser js/blog.js -c -m -o js/blog.min.js`).
+- Chaque page déclare une politique de sécurité (CSP) qui n'autorise que les fichiers du site : aucun
+  script en ligne ni attribut `onclick` n'est possible.
+- Les liens vers des pages hors du périmètre des devoirs pointent vers `#`.
 
 ## Maquettes (devoir n°1)
 
@@ -41,15 +50,13 @@ Le dossier `maquettes/` garde les captures annotées et le wireflow du devoir n�
 
 ---
 
-# Carnet Sobre — static interface (HTML / CSS)
+# Carnet Sobre — static blog with dynamic features
 
-Four static pages of an eco-designed and accessible blog: home page, article list, article
-detail and "About" page. No build step and no dependency: open `index.html` in a browser.
+Four pages of an eco-designed and accessible blog, plus three JavaScript features: a personal
+welcome message, a button to hide or show an article, and a category filter.
 
-- One stylesheet for the whole site, written mobile first (`css/style.css`), served minified
-  (`css/style.min.css`).
-- One small script (`js/menu.js`) to open the menu on small screens. Without JavaScript,
-  the menu is simply displayed in full.
-- System fonts, SVG icons, no tracker and no cookie.
-- Checked with the W3C validator (HTML and CSS: no error) and Lighthouse (100 in the four
-  categories on each page).
+- No dependency, no build step: open `index.html` in a browser.
+- One small script (`js/blog.js`, about 2.7 KB minified). Without JavaScript, all the content
+  stays readable; only the interactive controls are missing.
+- User input is always written as text (`textContent`), never as HTML; nothing is stored or sent.
+- Tests: `npm install`, then `npm test` (unit tests) and `npm run test:navigateur` (browser tests).
